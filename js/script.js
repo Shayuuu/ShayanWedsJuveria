@@ -133,6 +133,40 @@ const weddingConfig = {
     musicToggle.hidden = false;
     startHeroVideo();
     setTimeout(() => doorScene.remove(), 1400);
+    scheduleScrollNudge();
+  }
+
+  /* A few seconds after the doors open, gently lift the page and settle
+     back, so guests realise the invitation continues below. Repeats a
+     couple of times, and stops for good once they scroll themselves. */
+  function scheduleScrollNudge() {
+    if (prefersReducedMotion) return;
+
+    let userScrolled = false;
+    let nudging = false;
+    const onScroll = () => { if (!nudging) userScrolled = true; };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    let attempts = 0;
+    const nudge = () => {
+      if (userScrolled || window.scrollY > 5) {
+        window.removeEventListener("scroll", onScroll);
+        return;
+      }
+      nudging = true;
+      window.scrollTo({ top: 130, behavior: "smooth" });
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        // Let the settle finish before listening for real scrolls again
+        setTimeout(() => { nudging = false; }, 900);
+      }, 750);
+
+      attempts += 1;
+      if (attempts < 3) setTimeout(nudge, 7000);
+      else window.removeEventListener("scroll", onScroll);
+    };
+
+    setTimeout(nudge, 4500);
   }
 
   function openInvitation() {
