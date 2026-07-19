@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Shayan &amp; Juveria | Walima Invitation</title>
+  <meta name="description" content="You are warmly invited to celebrate the Walima of Shayan & Juveria." />
+  <meta name="theme-color" content="#f9f4f1" />
+
+  <!-- Open Graph / WhatsApp sharing preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Shayan & Juveria | Walima Invitation" />
+  <meta property="og:description" content="You are warmly invited to celebrate the Walima of Shayan & Juveria." />
+  <meta property="og:image" content="assets/wedding-preview.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Shayan & Juveria | Walima Invitation" />
+  <meta name="twitter:description" content="You are warmly invited to celebrate the Walima of Shayan & Juveria." />
+  <meta name="twitter:image" content="assets/wedding-preview.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Amiri&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/script.js"></script>
+</head>
+<body class="no-scroll">
+
+  <!-- ============ 1. LOADING SCREEN ============ -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <p class="loader-monogram">S <span>&amp;</span> J</p>
+      <div class="loader-line"><span></span></div>
+      <p class="loader-names">Shayan &amp; Juveria</p>
+      <svg class="loader-motif" viewBox="0 0 120 24" fill="none" aria-hidden="true">
+        <path d="M4 12 H44 M76 12 H116" stroke="currentColor" stroke-width="1" />
+        <path d="M60 4 L66 12 L60 20 L54 12 Z" stroke="currentColor" stroke-width="1" />
+        <circle cx="60" cy="12" r="2" fill="currentColor" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============ 2. ROYAL 3D DOOR INTRO ============ -->
+  <section class="door-scene" id="doorScene" aria-label="Tap to open your invitation">
+
+    <div class="door door--left" aria-hidden="true">
+      <div class="door-panel door-panel--arch"><span class="door-monogram">S</span></div>
+      <div class="door-panel door-panel--body"></div>
+      <span class="door-handle"></span>
+    </div>
+
+    <div class="door door--right" aria-hidden="true">
+      <div class="door-panel door-panel--arch"><span class="door-monogram">J</span></div>
+      <div class="door-panel door-panel--body"></div>
+      <span class="door-handle"></span>
+    </div>
+
+    <p class="door-invite" aria-hidden="true">You Are Invited<span>Tap to open the doors</span></p>
+    <button class="door-tap" id="doorTap" aria-label="Tap to open the invitation"></button>
+    <div class="env-flash" aria-hidden="true"></div>
+  </section>
+
+  <!-- ============ MAIN INVITATION ============ -->
+  <main class="invitation" id="invitation" aria-hidden="true">
+
+    <!-- ============ 3. HERO ============ -->
+    <section class="hero" id="home">
+      <video class="hero-video" id="heroVideo" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+      <div class="hero-veil" aria-hidden="true"></div>
+      <svg class="hero-corner hero-corner--tl" viewBox="0 0 160 160" fill="none" aria-hidden="true">
+        <path d="M-10 40 C40 44 70 20 80 -10 M-10 80 C50 82 92 40 96 -10 M6 6 C30 30 30 30 54 40" stroke="currentColor" stroke-width="1"/>
+        <circle cx="54" cy="44" r="3" stroke="currentColor" stroke-width="1"/>
+        <path d="M20 60 q8 -4 12 -14 q4 10 12 14 q-8 4 -12 14 q-4 -10 -12 -14 Z" stroke="currentColor" stroke-width="1"/>
+      </svg>
+      <svg class="hero-corner hero-corner--br" viewBox="0 0 160 160" fill="none" aria-hidden="true">
+        <path d="M-10 40 C40 44 70 20 80 -10 M-10 80 C50 82 92 40 96 -10 M6 6 C30 30 30 30 54 40" stroke="currentColor" stroke-width="1"/>
+        <circle cx="54" cy="44" r="3" stroke="currentColor" stroke-width="1"/>
+        <path d="M20 60 q8 -4 12 -14 q4 10 12 14 q-8 4 -12 14 q-4 -10 -12 -14 Z" stroke="currentColor" stroke-width="1"/>
+      </svg>
+
+      <div class="hero-content">
+        <p class="bismillah" lang="ar" dir="rtl">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+        <p class="hero-blessing">Together with the blessings of Allah<br />and our beloved families</p>
+
+        <h1 class="hero-names">
+          <span class="hero-name" id="heroGroom">Shayan</span>
+          <span class="hero-parents hero-parents--groom" id="heroGroomParents">Son of Mr. &amp; Mrs. Shaikh</span>
+          <span class="hero-amp">&amp;</span>
+          <span class="hero-name" id="heroBride">Juveria</span>
+          <span class="hero-parents hero-parents--bride" id="heroBrideParents">Daughter of Mr. &amp; Mrs. Shaikh</span>
+        </h1>
+
+        <div class="hero-divider" aria-hidden="true">
+          <span></span><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 L15 12 L12 21 L9 12 Z" stroke="currentColor" stroke-width="1"/></svg><span></span>
+        </div>
+
+        <p class="hero-sub">We joyfully invite you to celebrate<br />the beginning of our forever.</p>
+      </div>
+
+      <div class="scroll-indicator" aria-hidden="true">
+        <span class="scroll-indicator-line"></span>
+        <span class="scroll-indicator-label">Scroll</span>
+      </div>
+    </section>
+
+    <!-- ============ 4. WELCOME MESSAGE ============ -->
+    <section class="welcome-section" id="welcome">
+      <div class="welcome-inner">
+        <div class="welcome-divider reveal" aria-hidden="true">
+          <span></span>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20 C12 20 4 14.5 4 9.5 C4 6.8 6 5 8.4 5 C10 5 11.3 5.9 12 7.2 C12.7 5.9 14 5 15.6 5 C18 5 20 6.8 20 9.5 C20 14.5 12 20 12 20 Z"/></svg>
+          <span></span>
+        </div>
+
+        <p class="welcome-text reveal" id="welcomeText">
+          We are honored to welcome you to the Walima of
+          Shayan &amp; Juveria. As they begin their journey in
+          faith and love, thank you for being part of this
+          blessed occasion.
+        </p>
+
+        <p class="welcome-quote reveal">
+          &ldquo;And We created you in pairs.&rdquo;<br />
+          <span class="welcome-cite">&mdash; Quran 78:8</span>
+        </p>
+
+        <div class="welcome-divider reveal" aria-hidden="true">
+          <span></span>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20 C12 20 4 14.5 4 9.5 C4 6.8 6 5 8.4 5 C10 5 11.3 5.9 12 7.2 C12.7 5.9 14 5 15.6 5 C18 5 20 6.8 20 9.5 C20 14.5 12 20 12 20 Z"/></svg>
+          <span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. DATE REVEAL (SCRATCH) ============ -->
+    <section class="section date-section" id="date">
+      <div class="petals" id="petals" aria-hidden="true"></div>
+      <p class="eyebrow reveal">Save the Date</p>
+      <h2 class="section-title reveal" id="dateTitle">Scratch to Reveal</h2>
+
+      <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+        <defs>
+          <!-- Flatter ornamental rectangle with soft scalloped corners -->
+          <clipPath id="scallopClip" clipPathUnits="objectBoundingBox">
+            <path d="
+              M0.08,0.03
+              H0.92
+              C0.955,0.03 0.975,0.05 0.975,0.09
+              V0.91
+              C0.975,0.95 0.955,0.97 0.92,0.97
+              H0.08
+              C0.045,0.97 0.025,0.95 0.025,0.91
+              V0.09
+              C0.025,0.05 0.045,0.03 0.08,0.03
+              Z"/>
+          </clipPath>
+          <linearGradient id="goldFoil" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#e9cf9f"/>
+            <stop offset="0.35" stop-color="#c89a5e"/>
+            <stop offset="0.55" stop-color="#f3e0b8"/>
+            <stop offset="0.8" stop-color="#a8763e"/>
+            <stop offset="1" stop-color="#dcb87e"/>
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <div class="frame-shadow reveal">
+        <div class="scratch-wrap" id="scratchWrap">
+          <div class="date-panel" id="datePanel">
+            <svg class="scallop-outline" viewBox="0 0 120 96" fill="none" aria-hidden="true" preserveAspectRatio="none">
+              <!-- Outer gold foil border -->
+              <path d="M9.6,2.9 H110.4 C114.6,2.9 117,4.8 117,8.6 V87.4 C117,91.2 114.6,93.1 110.4,93.1 H9.6 C5.4,93.1 3,91.2 3,87.4 V8.6 C3,4.8 5.4,2.9 9.6,2.9 Z"
+                stroke="url(#goldFoil)" stroke-width="2" vector-effect="non-scaling-stroke"
+                transform="translate(60 48) scale(0.965) translate(-60 -48)"/>
+              <!-- Inner echo line -->
+              <path d="M9.6,2.9 H110.4 C114.6,2.9 117,4.8 117,8.6 V87.4 C117,91.2 114.6,93.1 110.4,93.1 H9.6 C5.4,93.1 3,91.2 3,87.4 V8.6 C3,4.8 5.4,2.9 9.6,2.9 Z"
+                stroke="url(#goldFoil)" stroke-width="0.85" opacity="0.7" vector-effect="non-scaling-stroke"
+                transform="translate(60 48) scale(0.9) translate(-60 -48)"/>
+              <!-- Tiny ornamental corner diamonds -->
+              <g fill="url(#goldFoil)" opacity="0.9">
+                <path d="M12 10 L14 14 L12 18 L10 14 Z"/>
+                <path d="M108 10 L110 14 L108 18 L106 14 Z"/>
+                <path d="M12 78 L14 82 L12 86 L10 82 Z"/>
+                <path d="M108 78 L110 82 L108 86 L106 82 Z"/>
+              </g>
+            </svg>
+            <p class="date-invited">You&rsquo;re Invited!</p>
+            <p class="date-full" id="dateFull">[Month Date, Year]</p>
+            <p class="date-day" id="dateDay">[Day]</p>
+            <p class="date-iman">In Sha Allah</p>
+          </div>
+          <canvas id="scratchCanvas" aria-hidden="true"></canvas>
+        </div>
+      </div>
+      <button class="scratch-skip" id="scratchSkip" type="button">or tap here to reveal</button>
+    </section>
+
+    <!-- ============ 6. PHOTO SLIDER ============ -->
+    <section class="section slider-section" id="slider">
+      <div class="slider reveal" id="photoSlider">
+        <div class="slider-track" id="sliderTrack"><!-- rendered from weddingConfig --></div>
+        <div class="slider-dots" id="sliderDots" role="tablist" aria-label="Photo slides"></div>
+      </div>
+    </section>
+
+    <!-- ============ 7. COUNTDOWN ============ -->
+    <section class="section countdown-section" id="countdown">
+      <p class="eyebrow eyebrow--light reveal">Our Big Day</p>
+      <h2 class="section-title section-title--light reveal">Counting Down<br />To Our Forever</h2>
+
+      <div class="countdown reveal" id="countdownGrid">
+        <div class="cd-cell"><span class="cd-value" id="cdDays">--</span><span class="cd-label">Days</span></div>
+        <div class="cd-cell"><span class="cd-value" id="cdHours">--</span><span class="cd-label">Hours</span></div>
+        <div class="cd-cell"><span class="cd-value" id="cdMinutes">--</span><span class="cd-label">Minutes</span></div>
+        <div class="cd-cell"><span class="cd-value" id="cdSeconds">--</span><span class="cd-label">Seconds</span></div>
+      </div>
+      <p class="countdown-done" id="countdownDone" hidden>Alhamdulillah — the day is here.</p>
+    </section>
+
+    <!-- ============ 7. OUR STORY ============ -->
+    <section class="section story-section" id="story">
+      <p class="eyebrow reveal">Our Story</p>
+      <h2 class="section-title reveal">Our Journey</h2>
+
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <span class="timeline-dot"></span>
+          <h3 class="timeline-title">The First Hello</h3>
+          <p class="timeline-text">Where our story began.</p>
+        </div>
+        <div class="timeline-item reveal">
+          <span class="timeline-dot"></span>
+          <h3 class="timeline-title">The Proposal</h3>
+          <p class="timeline-text">The beginning of a beautiful new chapter.</p>
+        </div>
+        <div class="timeline-item reveal">
+          <span class="timeline-dot"></span>
+          <h3 class="timeline-title">Forever Begins</h3>
+          <p class="timeline-text">Our Walima Day.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8. Walima Day Program ============ -->
+    <section class="section program-section" id="program">
+      <p class="eyebrow reveal">The Big Day</p>
+      <h2 class="section-title reveal">Walima Day Program</h2>
+      <div class="program-list" id="programList"><!-- rendered from weddingConfig --></div>
+    </section>
+
+    <!-- ============ 9. VENUE ============ -->
+    <section class="section venue-section" id="venue">
+      <p class="eyebrow reveal">The Venue</p>
+      <h2 class="section-title reveal">Join Us</h2>
+
+      <div class="venue-card reveal">
+        <svg class="venue-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M8 42 V24 C8 15 15 9 24 9 C33 9 40 15 40 24 V42" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M4 42 H44" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M20 42 V32 C20 29.8 21.8 28 24 28 C26.2 28 28 29.8 28 32 V42" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M21 15 a4.5 4.5 0 1 0 6 0 a3.6 3.6 0 1 1 -6 0 Z" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        <h3 class="venue-name" id="venueName">[Venue Name]</h3>
+        <p class="venue-address" id="venueAddress">[Full Address]</p>
+        <p class="venue-when"><span id="venueDate">[Date]</span> &middot; <span id="venueTime">[Time]</span></p>
+        <div class="venue-actions">
+          <a class="btn btn--primary" id="venueDirections" href="#" target="_blank" rel="noopener">Get Directions</a>
+          <button class="btn btn--ghost" id="addToCalendar" type="button">Add to Calendar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 10. DRESS CODE ============ -->
+    <section class="section dresscode-section" id="dresscode">
+      <p class="eyebrow reveal">Dress Code</p>
+      <h2 class="section-title reveal">What to Wear</h2>
+      <p class="dress-headline reveal" id="dressCode">Traditional &bull; Elegant &bull; Modest</p>
+      <p class="dress-note reveal" id="dressNote">We kindly request our guests to dress in traditional attire for the celebration.</p>
+    </section>
+
+    <!-- ============ 12. HOW TO REACH ============ -->
+    <section class="section info-section" id="reach">
+      <p class="eyebrow reveal">Getting There</p>
+      <h2 class="section-title reveal">How to Reach</h2>
+      <div class="info-cards" id="reachCards"><!-- rendered from weddingConfig --></div>
+    </section>
+
+    <!-- ============ 14. SPECIAL MESSAGE ============ -->
+    <section class="section message-section" id="message">
+      <svg class="message-motif" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+        <path d="M40 6 L48 32 L74 40 L48 48 L40 74 L32 48 L6 40 L32 32 Z" stroke="currentColor" stroke-width="1"/>
+        <circle cx="40" cy="40" r="6" stroke="currentColor" stroke-width="1"/>
+      </svg>
+      <p class="message-lines reveal">Two hearts.<br />Two families.<br />One beautiful beginning.</p>
+      <p class="message-body reveal">We would be honoured to have you<br />with us as we begin this new chapter<br />of our lives.</p>
+      <p class="message-sign reveal">&mdash; Shayan &amp; Juveria</p>
+    </section>
+
+    <!-- ============ 15b. THE BLESSING OF WALIMA ============ -->
+    <section class="section blessing-section" id="blessing">
+      <p class="eyebrow reveal">The Blessing of Walima</p>
+
+      <p class="blessing-intro reveal">
+        In Islam, the Walima is more than a celebration &mdash; it is a
+        beautiful Sunnah of gratitude, joy, and togetherness as two lives
+        begin their journey as one.
+      </p>
+
+      <div class="blessing-quote reveal">
+        <p class="blessing-hadith">&ldquo;Give a Walima, even if with one sheep.&rdquo;</p>
+        <p class="blessing-cite">&mdash; Sahih al-Bukhari 5167</p>
+      </div>
+
+      <p class="blessing-intro reveal">
+        And just as the Prophet <span class="blessing-salawat" lang="ar">&#65018;</span>
+        invited others to share in this joy, we too wish to celebrate
+        surrounded by those who hold a special place in our hearts.
+      </p>
+
+      <p class="blessing-final reveal">
+        Your presence, your duas,<br />and your blessings would make<br />our Walima truly complete.
+      </p>
+    </section>
+
+    <!-- ============ 16. FINAL SECTION ============ -->
+    <section class="closing-section" id="closing">
+      <div class="stars" id="stars" aria-hidden="true"></div>
+      <div class="closing-content">
+        <p class="closing-main reveal">Your presence will make our celebration even more special.</p>
+        <p class="closing-dua reveal">Please keep us in your duas as we begin this beautiful journey together.</p>
+        <p class="closing-blessing reveal">May Allah bless this union and keep us together in goodness.</p>
+        <p class="closing-sign reveal">With Love,<br /><span class="closing-names">Shayan &amp; Juveria</span></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FLOATING NAVIGATION ============ -->
+  <nav class="floating-nav" id="floatingNav" aria-label="Invitation sections" hidden>
+    <a href="#home" data-section="home" class="nav-item is-active" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 11 L12 4 L20 11 V20 H14 V15 H10 V20 H4 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="#program" data-section="program" class="nav-item" aria-label="Program">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="6" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 10 H20 M8 4 V7 M16 4 V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span>Program</span>
+    </a>
+    <a href="#venue" data-section="venue" class="nav-item" aria-label="Venue">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 21 C12 21 19 14.5 19 9.5 A7 7 0 0 0 5 9.5 C5 14.5 12 21 12 21 Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
+      <span>Venue</span>
+    </a>
+  </nav>
+
+  <!-- ============ MUSIC TOGGLE ============ -->
+  <button class="music-toggle" id="musicToggle" aria-label="Turn music on" aria-pressed="false" hidden>
+    <svg class="icon-music-on" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18 V6 L20 4 V16" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="16" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
+    <span class="music-waves" aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+
+  <audio id="bgMusic" loop preload="none"></audio>
+</body>
+</html>

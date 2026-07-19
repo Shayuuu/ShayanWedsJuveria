@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800">
+  <rect width="640" height="800" fill="#14584a"/>
+  <rect x="24" y="24" width="592" height="752" fill="none" stroke="#d9bc7a" stroke-width="2"/>
+  <circle cx="320" cy="360" r="140" fill="none" stroke="#d9bc7a" stroke-width="2.5"/>
+  <path d="M282 300 a52 52 0 1 0 76 0 a41 41 0 1 1 -76 0 Z" fill="none" stroke="#d9bc7a" stroke-width="2"/>
+  <text x="320" y="470" font-family="Georgia, serif" font-size="48" font-style="italic" fill="#f8f3e9" text-anchor="middle">S &amp; J</text>
+  <text x="320" y="700" font-family="Georgia, serif" font-size="22" letter-spacing="8" fill="#e9dbb8" text-anchor="middle">YOUR PHOTO HERE</text>
+</svg>
