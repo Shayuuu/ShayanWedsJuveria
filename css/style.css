@@ -4,18 +4,20 @@
    ========================================================================== */
 
 :root {
-  /* Royal Prestige palette — warm terracotta / copper on cream.
-     (--emerald* now hold the deep terracotta "royal" tones.) */
-  --ivory: #f9f4f1;
-  --ivory-deep: #f3e9e2;
-  --cream-card: #fbf5f0;
+  /* Winter Walima — candlelit terracotta against a cool December dusk.
+     (--emerald* still hold the deep terracotta "royal" tones.) */
+  --ivory: #f4f6f8;
+  --ivory-deep: #e8eef3;
+  --cream-card: #f7f9fb;
   --gold: #b06a49;
-  --gold-light: #dcae95;
-  --gold-pale: #f0dccf;
+  --gold-light: #d4b49a;
+  --gold-pale: #e4d5c8;
   --emerald: #8a4b36;
   --emerald-deep: #5c3325;
-  --ink: #392922;
-  --ink-soft: #7e6358;
+  --ink: #2f3438;
+  --ink-soft: #6a7278;
+  --frost: #c8d6e0;
+  --winter-sky: #1a2430;
 
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Jost", "Segoe UI", sans-serif;
@@ -45,16 +47,16 @@ body.no-scroll { overflow: hidden; height: 100dvh; }
 
 img { display: block; max-width: 100%; }
 
-/* Subtle paper grain over everything */
+/* Soft frost grain over everything */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.5;
-  background-image: radial-gradient(rgba(176, 106, 73, 0.05) 1px, transparent 1px);
-  background-size: 22px 22px;
+  opacity: 0.55;
+  background-image: radial-gradient(rgba(160, 190, 215, 0.1) 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
 }
 
 /* ==========================================================================
@@ -230,7 +232,7 @@ body::before {
   z-index: 50;
   overflow: hidden;
   perspective: 1400px;
-  background: radial-gradient(120% 100% at 50% 50%, #3a2016 0%, #170b06 100%);
+  background: radial-gradient(120% 100% at 50% 35%, #334556 0%, #0e141c 100%);
   transition: opacity 1.2s ease, visibility 1.2s;
 }
 
@@ -518,8 +520,8 @@ body::before {
    dark welcome panel below (reference-style seamless transition) */
 .hero.has-video .hero-veil {
   background:
-    radial-gradient(90% 70% at 50% 42%, rgba(28, 17, 11, 0.12) 0%, rgba(28, 17, 11, 0.52) 100%),
-    linear-gradient(180deg, rgba(248, 243, 233, 0.28) 0%, transparent 38%, transparent 55%, rgba(36, 20, 16, 0.65) 88%, #241410 100%);
+    radial-gradient(90% 70% at 50% 42%, rgba(18, 24, 32, 0.18) 0%, rgba(18, 24, 32, 0.55) 100%),
+    linear-gradient(180deg, rgba(232, 238, 243, 0.22) 0%, transparent 38%, transparent 55%, rgba(18, 24, 32, 0.72) 88%, #121820 100%);
 }
 
 .hero-content {
@@ -794,10 +796,10 @@ body::before {
   padding: 4.5rem 1.6rem 5.5rem;
   background: linear-gradient(
     180deg,
-    #241410 0%,
-    #43261d 30%,
-    #8a6355 58%,
-    #d9c2b6 80%,
+    #121820 0%,
+    #243040 28%,
+    #6a5a52 55%,
+    #c8b8ae 78%,
     var(--ivory) 100%
   );
 }
@@ -1103,8 +1105,8 @@ body::before {
   max-width: none;
   padding-bottom: clamp(3rem, 8vw, 4.5rem);
   background:
-    radial-gradient(90% 70% at 50% 100%, rgba(220, 174, 149, 0.16), transparent 65%),
-    linear-gradient(165deg, var(--emerald) 0%, var(--emerald-deep) 100%);
+    radial-gradient(90% 70% at 50% 100%, rgba(200, 214, 224, 0.14), transparent 65%),
+    linear-gradient(165deg, #6a4538 0%, #3a2a28 55%, #1e2834 100%);
   color: var(--ivory);
 }
 
@@ -1765,8 +1767,8 @@ body::before {
   padding: 5rem 1.8rem 7rem;
   overflow: hidden;
   background:
-    radial-gradient(110% 70% at 50% 105%, rgba(220, 174, 149, 0.2), transparent 60%),
-    linear-gradient(180deg, var(--emerald-deep) 0%, #3a2016 100%);
+    radial-gradient(110% 70% at 50% 105%, rgba(200, 214, 224, 0.18), transparent 60%),
+    linear-gradient(180deg, #243040 0%, #121820 100%);
   color: var(--ivory);
 }
 
@@ -2105,9 +2107,9 @@ body::before {
 
 .countdown-section {
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84'%3E%3Cpath d='M42 24 L46.5 37.5 L60 42 L46.5 46.5 L42 60 L37.5 46.5 L24 42 L37.5 37.5 Z' fill='none' stroke='rgba(220, 174, 149,0.1)' stroke-width='1'/%3E%3C/svg%3E"),
-    radial-gradient(90% 70% at 50% 100%, rgba(220, 174, 149, 0.14), transparent 65%),
-    linear-gradient(165deg, var(--emerald) 0%, var(--emerald-deep) 100%);
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84'%3E%3Cpath d='M42 24 L46.5 37.5 L60 42 L46.5 46.5 L42 60 L37.5 46.5 L24 42 L37.5 37.5 Z' fill='none' stroke='rgba(200, 214, 224,0.12)' stroke-width='1'/%3E%3C/svg%3E"),
+    radial-gradient(90% 70% at 50% 100%, rgba(200, 214, 224, 0.12), transparent 65%),
+    linear-gradient(165deg, #6a4538 0%, #3a2a28 55%, #1e2834 100%);
 }
 
 .countdown {
@@ -2241,8 +2243,9 @@ body::before {
 
 .message-section {
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84'%3E%3Cpath d='M42 24 L46.5 37.5 L60 42 L46.5 46.5 L42 60 L37.5 46.5 L24 42 L37.5 37.5 Z' fill='none' stroke='rgba(220, 174, 149,0.08)' stroke-width='1'/%3E%3C/svg%3E"),
-    linear-gradient(170deg, #8a4b36 0%, #5c3325 100%);
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84'%3E%3Cpath d='M42 24 L46.5 37.5 L60 42 L46.5 46.5 L42 60 L37.5 46.5 L24 42 L37.5 37.5 Z' fill='none' stroke='rgba(200, 214, 224,0.1)' stroke-width='1'/%3E%3C/svg%3E"),
+    radial-gradient(80% 55% at 50% 0%, rgba(200, 214, 224, 0.16), transparent 70%),
+    linear-gradient(170deg, #7a4a38 0%, #3a2a28 70%, #1e2834 100%);
 }
 
 .message-motif { color: var(--gold-light); }
@@ -2350,7 +2353,7 @@ body::before {
    ========================================================================== */
 
 /* ==========================================================================
-   Ambient background — floating gold dust on every section
+   Ambient background — soft winter snowfall on every section
    ========================================================================== */
 
 .ambient {
@@ -2363,26 +2366,59 @@ body::before {
 
 .ambient i {
   position: absolute;
+  top: -8%;
   width: var(--s, 4px);
   height: var(--s, 4px);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(168, 118, 62, 0.8) 0%, rgba(168, 118, 62, 0) 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(220, 232, 240, 0.65) 50%, transparent 75%);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.55);
   opacity: 0;
-  animation: dustDrift var(--t, 10s) ease-in-out var(--d, 0s) infinite;
+  animation: snowFall var(--t, 12s) linear var(--d, 0s) infinite;
 }
 
-/* Brighter, warmer sparks for the dark panels */
-.ambient--bright i {
-  background: radial-gradient(circle, rgba(240, 214, 165, 0.95) 0%, rgba(240, 214, 165, 0) 70%);
-  box-shadow: 0 0 6px rgba(240, 214, 165, 0.3);
+/* Soft candlelight flecks mixed into snow on dark panels */
+.ambient--bright i:nth-child(4n) {
+  background: radial-gradient(circle, rgba(240, 214, 165, 0.9) 0%, rgba(240, 214, 165, 0) 70%);
+  box-shadow: 0 0 6px rgba(240, 214, 165, 0.35);
 }
 
-@keyframes dustDrift {
-  0%   { transform: translate3d(0, 0, 0) scale(0.7); opacity: 0; }
-  20%  { opacity: var(--o, 0.5); }
-  50%  { transform: translate3d(var(--x, 14px), -38px, 0) scale(1); }
-  80%  { opacity: var(--o, 0.5); }
-  100% { transform: translate3d(var(--x2, -10px), -76px, 0) scale(0.6); opacity: 0; }
+/* Larger, softer flakes for depth */
+.ambient i:nth-child(5n) {
+  filter: blur(0.6px);
+}
+
+@keyframes snowFall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  5% { opacity: var(--o, 0.75); }
+  92% { opacity: var(--o, 0.75); }
+  100% {
+    transform: translate3d(var(--x, 40px), 115vh, 0) rotate(220deg);
+    opacity: 0;
+  }
+}
+
+/* Stronger frost mist along the top of dark winter panels */
+.welcome-section::after,
+.countdown-section::after,
+.closing-section::after,
+.message-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 42%;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(210, 224, 236, 0.28) 0%,
+    rgba(200, 214, 224, 0.1) 45%,
+    transparent 100%
+  );
 }
 
 /* Welcome panel needs to contain its ambient layer */

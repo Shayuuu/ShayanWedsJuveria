@@ -82,7 +82,7 @@ const weddingConfig = {
   ],
 
   // Background music (place your file at this path).
-  music: "assets/bg-music.mp3",
+  music: "assets/bg-music.m4a",
 
   // Cinematic hero background video (place your file at this path).
   // Keep it short (10–20s loop), muted, and compressed (~2–4 MB) for mobile.
@@ -636,29 +636,27 @@ const weddingConfig = {
     stars.appendChild(s);
   }
 
-  /* ---------------- 15b. Ambient gold dust on every section ---------------- */
+  /* ---------------- 15b. Soft winter snowfall on every section ---------------- */
 
   if (!prefersReducedMotion) {
     const darkPanels = ".hero, .welcome-section, .countdown-section, .message-section, .closing-section";
 
     document
-      .querySelectorAll(".hero, .welcome-section, .section, .closing-section")
+      .querySelectorAll(".hero, .welcome-section, .section, .closing-section, .door-scene")
       .forEach((sec) => {
         const layer = document.createElement("div");
-        layer.className = "ambient" + (sec.matches(darkPanels) ? " ambient--bright" : "");
+        layer.className = "ambient" + (sec.matches(darkPanels) || sec.classList.contains("door-scene") ? " ambient--bright" : "");
         layer.setAttribute("aria-hidden", "true");
 
-        for (let i = 0; i < 11; i++) {
+        const count = sec.classList.contains("door-scene") || sec.classList.contains("hero") ? 36 : 28;
+        for (let i = 0; i < count; i++) {
           const p = document.createElement("i");
-          p.style.left = `${(2 + Math.random() * 96).toFixed(1)}%`;
-          p.style.top = `${(6 + Math.random() * 86).toFixed(1)}%`;
-          p.style.setProperty("--s", `${(2 + Math.random() * 3.5).toFixed(1)}px`);
-          p.style.setProperty("--t", `${(8 + Math.random() * 8).toFixed(1)}s`);
-          // Negative delay: particles are already mid-drift on first paint
-          p.style.setProperty("--d", `${(-Math.random() * 16).toFixed(1)}s`);
-          p.style.setProperty("--x", `${Math.round(Math.random() * 40 - 20)}px`);
-          p.style.setProperty("--x2", `${Math.round(Math.random() * 40 - 20)}px`);
-          p.style.setProperty("--o", (0.3 + Math.random() * 0.4).toFixed(2));
+          p.style.left = `${(Math.random() * 100).toFixed(1)}%`;
+          p.style.setProperty("--s", `${(2.5 + Math.random() * 6.5).toFixed(1)}px`);
+          p.style.setProperty("--t", `${(6 + Math.random() * 10).toFixed(1)}s`);
+          p.style.setProperty("--d", `${(-Math.random() * 14).toFixed(1)}s`);
+          p.style.setProperty("--x", `${Math.round(Math.random() * 100 - 50)}px`);
+          p.style.setProperty("--o", (0.55 + Math.random() * 0.4).toFixed(2));
           layer.appendChild(p);
         }
 
