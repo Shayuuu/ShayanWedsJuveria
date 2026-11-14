@@ -100,6 +100,65 @@ const weddingConfig = {
   const $ = (sel) => document.querySelector(sel);
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------------- Personalized invite (from ?to= & ?guests=) ---------------- */
+
+  function readInviteGuest() {
+    const params = new URLSearchParams(window.location.search);
+    const to = (params.get("to") || "").trim().replace(/\s+/g, " ").slice(0, 60);
+    const guestsRaw = (params.get("guests") || "").trim().toLowerCase();
+    if (!to) return null;
+
+    if (guestsRaw === "family") {
+      return { name: to, mode: "family", count: null };
+    }
+
+    const count = Number(guestsRaw);
+    if (Number.isFinite(count) && count >= 1) {
+      return { name: to, mode: "limited", count: Math.min(50, Math.floor(count)) };
+    }
+
+    return { name: to, mode: "family", count: null };
+  }
+
+  const inviteGuest = readInviteGuest();
+
+  function applyGuestPersonalization() {
+    if (!inviteGuest) return;
+
+    const doorGuest = $("#doorGuest");
+    const doorGuestNote = $("#doorGuestNote");
+    if (doorGuest) {
+      doorGuest.hidden = false;
+      doorGuest.textContent = `Dear ${inviteGuest.name}`;
+    }
+    if (doorGuestNote) {
+      doorGuestNote.hidden = false;
+      doorGuestNote.textContent =
+        inviteGuest.mode === "family"
+          ? "You & your family are invited"
+          : inviteGuest.count === 1
+            ? "Invitation for 1 guest"
+            : `Invitation for ${inviteGuest.count} guests`;
+    }
+
+    const welcome = $("#welcomeText");
+    if (welcome) {
+      const who =
+        inviteGuest.mode === "family"
+          ? `${inviteGuest.name} and family`
+          : inviteGuest.count === 1
+            ? inviteGuest.name
+            : `${inviteGuest.name} and guests`;
+      welcome.textContent =
+        `Dear ${who}, we are honored to welcome you to the Walima of ` +
+        `${weddingConfig.groom} & ${weddingConfig.bride}. ` +
+        `As they begin their journey in faith and love, thank you for being ` +
+        `part of this blessed occasion.`;
+    }
+  }
+
+  applyGuestPersonalization();
+
   /* ---------------- 1. Loading screen ---------------- */
 
   const loader = $("#loader");
@@ -261,7 +320,10 @@ const weddingConfig = {
   if (!weddingConfig.groomParents) groomParentsEl.hidden = true;
   if (!weddingConfig.brideParents) brideParentsEl.hidden = true;
 
-  $("#welcomeText").textContent = weddingConfig.welcomeMessage;
+  // Keep personalized welcome if this link was generated for a guest
+  if (!inviteGuest) {
+    $("#welcomeText").textContent = weddingConfig.welcomeMessage;
+  }
 
   const d = weddingConfig.dateReveal;
   $("#dateFull").textContent = `${d.month} ${d.date}, ${d.year}`;

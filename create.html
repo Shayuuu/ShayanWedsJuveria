@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Create Invite Link | Shayan &amp; Juveria</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#121820" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/create.css" />
+  <script defer src="js/create.js"></script>
+</head>
+<body>
+  <main class="create">
+    <header class="create-header">
+      <p class="create-eyebrow">Shayan &amp; Juveria</p>
+      <h1 class="create-title">Create Invite Link</h1>
+      <p class="create-lead">Enter the guest&rsquo;s name and guest type. We&rsquo;ll craft a personal link and a WhatsApp message ready to send.</p>
+    </header>
+
+    <form class="create-form" id="inviteForm" autocomplete="on">
+      <label class="field">
+        <span class="field-label">Guest name</span>
+        <input
+          type="text"
+          id="guestName"
+          name="guestName"
+          placeholder="e.g. Ahmed Uncle"
+          required
+          maxlength="60"
+          autofocus
+        />
+      </label>
+
+      <fieldset class="guest-type">
+        <legend class="field-label">How many people?</legend>
+
+        <label class="option">
+          <input type="radio" name="guestMode" value="family" checked />
+          <span class="option-card">
+            <strong>Entire family</strong>
+            <em>Invite them with their whole family</em>
+          </span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="guestMode" value="limited" />
+          <span class="option-card">
+            <strong>Limited guests</strong>
+            <em>Set an exact number of people</em>
+          </span>
+        </label>
+      </fieldset>
+
+      <label class="field field--count" id="countField" hidden>
+        <span class="field-label">Number of people</span>
+        <input
+          type="number"
+          id="guestCount"
+          name="guestCount"
+          min="1"
+          max="50"
+          step="1"
+          placeholder="e.g. 4"
+          inputmode="numeric"
+        />
+      </label>
+
+      <button class="btn-generate" type="submit">Generate invite</button>
+    </form>
+
+    <section class="create-result" id="result" hidden>
+      <p class="result-eyebrow">Your personalized invite</p>
+
+      <div class="result-block">
+        <div class="result-head">
+          <h2>Invite link</h2>
+          <button type="button" class="btn-copy" id="copyLink" data-target="inviteLink">Copy</button>
+        </div>
+        <input class="result-input" id="inviteLink" type="text" readonly />
+      </div>
+
+      <div class="result-block">
+        <div class="result-head">
+          <h2>WhatsApp message</h2>
+          <button type="button" class="btn-copy" id="copyMessage" data-target="inviteMessage">Copy</button>
+        </div>
+        <textarea class="result-message" id="inviteMessage" readonly rows="12"></textarea>
+      </div>
+
+      <div class="result-actions">
+        <a class="btn-whatsapp" id="whatsappShare" href="#" target="_blank" rel="noopener">
+          Open in WhatsApp
+        </a>
+        <a class="btn-preview" id="previewLink" href="#" target="_blank" rel="noopener">
+          Preview invite
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

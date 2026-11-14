@@ -64,7 +64,12 @@
       <span class="door-handle"></span>
     </div>
 
-    <p class="door-invite" aria-hidden="true">You Are Invited<span>Tap to open the doors</span></p>
+    <p class="door-invite" aria-hidden="true">
+      <span class="door-guest" id="doorGuest" hidden></span>
+      You Are Invited
+      <span class="door-guest-note" id="doorGuestNote" hidden></span>
+      <span>Tap to open the doors</span>
+    </p>
     <button class="door-tap" id="doorTap" aria-label="Tap to open the invitation"></button>
     <div class="env-flash" aria-hidden="true"></div>
   </section>

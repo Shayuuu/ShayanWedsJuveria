@@ -409,6 +409,26 @@ body::before {
   animation: tapHint 2.2s ease-in-out infinite;
 }
 
+.door-guest {
+  font-family: var(--font-calligraphy, "Dancing Script", cursive) !important;
+  font-size: clamp(1.35rem, 5.8vw, 1.75rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: none !important;
+  color: #f7ecd2 !important;
+  animation: none !important;
+  opacity: 1 !important;
+}
+
+.door-guest-note {
+  font-size: 0.72rem !important;
+  letter-spacing: 0.28em !important;
+  color: rgba(243, 224, 184, 0.9) !important;
+  animation: none !important;
+  opacity: 0.95 !important;
+  max-width: 28ch;
+}
+
 @keyframes tapHint {
   0%, 100% { opacity: 0.8; }
   50% { opacity: 1; }
