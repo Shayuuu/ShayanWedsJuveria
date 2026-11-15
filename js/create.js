@@ -89,7 +89,7 @@
       url,
       "",
       "With love,",
-      "Shayan & Juveria",
+      "Iftekhar & Shahida",
     ].join("\n");
   }
 
