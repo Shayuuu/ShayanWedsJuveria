@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Create Invite Link (Bride Side) | Juveria &amp; Shayan</title>
+  <title>Create PDF Invite (Bride Side) | Juveria &amp; Shayan</title>
   <meta name="robots" content="noindex, nofollow" />
   <meta name="theme-color" content="#121820" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
@@ -17,8 +17,8 @@
   <main class="create">
     <header class="create-header">
       <p class="create-eyebrow">Juveria &amp; Shayan</p>
-      <h1 class="create-title">Create Invite Link</h1>
-      <p class="create-lead">Bride&rsquo;s side generator. Enter the guest&rsquo;s name and guest type &mdash; messages sign as Sameera Mohd Zubair Shaikh, and the card shows Juveria first.</p>
+      <h1 class="create-title">Create PDF Invite</h1>
+      <p class="create-lead">Bride&rsquo;s side generator for a simple PDF card. Enter the guest name and count &mdash; then send the WhatsApp message with the PDF invite link. Signs as Sameera Mohd Zubair Shaikh.</p>
     </header>
 
     <form class="create-form" id="inviteForm" autocomplete="on">
@@ -69,15 +69,15 @@
         />
       </label>
 
-      <button class="btn-generate" type="submit">Generate invite</button>
+      <button class="btn-generate" type="submit">Generate PDF invite</button>
     </form>
 
     <section class="create-result" id="result" hidden>
-      <p class="result-eyebrow">Your personalized invite</p>
+      <p class="result-eyebrow">Your personalized PDF invite</p>
 
       <div class="result-block">
         <div class="result-head">
-          <h2>Invite link</h2>
+          <h2 id="linkHeading">PDF invite link</h2>
           <button type="button" class="btn-copy" id="copyLink" data-target="inviteLink">Copy</button>
         </div>
         <input class="result-input" id="inviteLink" type="text" readonly />
@@ -96,7 +96,7 @@
           Open in WhatsApp
         </a>
         <a class="btn-preview" id="previewLink" href="#" target="_blank" rel="noopener">
-          Preview invite
+          <span id="previewLabel">Open PDF invite</span>
         </a>
       </div>
     </section>

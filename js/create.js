@@ -26,6 +26,8 @@
   const inviteMessage = document.getElementById("inviteMessage");
   const whatsappShare = document.getElementById("whatsappShare");
   const previewLink = document.getElementById("previewLink");
+  const linkHeading = document.getElementById("linkHeading");
+  const previewLabel = document.getElementById("previewLabel");
 
   function getMode() {
     const checked = form.querySelector('input[name="guestMode"]:checked');
@@ -44,6 +46,12 @@
   });
   syncCountVisibility();
 
+  // Bride side uses a basic PDF card, not the web invitation
+  if (isBrideSide) {
+    if (linkHeading) linkHeading.textContent = "PDF invite link";
+    if (previewLabel) previewLabel.textContent = "Open PDF invite";
+  }
+
   function cleanName(raw) {
     return String(raw || "")
       .trim()
@@ -59,7 +67,16 @@
     } else {
       params.set("guests", String(count));
     }
-    if (isBrideSide) params.set("side", "bride");
+
+    if (isBrideSide) {
+      // Personalized printable / PDF card for girl side
+      return `${INVITE_BASE}/pdf-invite.html?${params.toString()}`;
+    }
+
+    params.set("side", "groom");
+    // Keep groom links on the interactive web invite
+    // (omit side or use default Shayan-first card)
+    params.delete("side");
     return `${INVITE_BASE}/?${params.toString()}`;
   }
 
@@ -81,6 +98,10 @@
 
   function buildMessage(name, mode, count, url) {
     const who = guestPhrase(mode, count);
+    const openLine = isBrideSide
+      ? "Open your invitation (save / print as PDF):"
+      : "Tap to open your personal invitation:";
+
     return [
       "Assalamu Alaikum 🤍",
       "",
@@ -95,7 +116,7 @@
       "📅 Friday, 25th December 2026 · 7:30 PM",
       "📍 Najam Baug, Dongri, Mumbai",
       "",
-      "Tap to open your personal invitation:",
+      openLine,
       url,
       "",
       "With love,",

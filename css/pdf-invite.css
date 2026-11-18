@@ -1,0 +1,213 @@
+:root {
+  --ink: #3a2a22;
+  --soft: #6e5a4e;
+  --gold: #9a6844;
+  --paper: #f7f1ea;
+  --border: #c4a07a;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Jost", "Segoe UI", sans-serif;
+  --font-script: "Dancing Script", cursive;
+  --font-arabic: "Amiri", serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100dvh;
+  background: #e8e0d6;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  display: grid;
+  place-items: center;
+  padding: 1.2rem;
+}
+
+.toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.85rem;
+  background: rgba(58, 42, 34, 0.92);
+}
+
+.toolbar button,
+.toolbar a {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 3px;
+  padding: 0.7rem 1rem;
+}
+
+.toolbar button {
+  border: none;
+  background: #9a6844;
+  color: #fff;
+  cursor: pointer;
+}
+
+.toolbar a { color: #f3e0b8; }
+
+.card {
+  width: min(100%, 420px);
+  margin-top: 4rem;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 40px -24px rgba(57, 41, 34, 0.45);
+}
+
+.card-inner {
+  margin: 10px;
+  border: 1px solid rgba(154, 104, 68, 0.35);
+  padding: 2.2rem 1.5rem 2rem;
+  text-align: center;
+}
+
+.bismillah {
+  font-family: var(--font-arabic);
+  font-size: 1.35rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.4rem;
+}
+
+.dear {
+  font-family: var(--font-script);
+  font-size: 1.55rem;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+}
+
+.guest-note {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  min-height: 1em;
+}
+
+.intro {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--soft);
+  margin-bottom: 1.2rem;
+}
+
+.names {
+  font-family: var(--font-script);
+  font-weight: 600;
+  font-size: clamp(2.6rem, 12vw, 3.4rem);
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 0.7rem;
+}
+
+.names .amp {
+  display: block;
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin: 0.15rem 0;
+}
+
+.parents {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--soft);
+  margin-bottom: 1.3rem;
+}
+
+.divider {
+  width: 120px;
+  height: 1px;
+  margin: 0 auto 1.3rem;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.when,
+.where {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--ink);
+  margin-bottom: 1.1rem;
+}
+
+.when strong,
+.where strong {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.closing {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--soft);
+  margin: 1.4rem 0 1.5rem;
+}
+
+.sign {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--soft);
+  line-height: 1.8;
+}
+
+.sign span {
+  font-family: var(--font-script);
+  font-size: 1.45rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--gold);
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  body {
+    background: white;
+    padding: 0;
+    display: block;
+  }
+
+  .no-print { display: none !important; }
+
+  .card {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    border: 1px solid var(--border);
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+
+  .card-inner {
+    padding: 28mm 16mm;
+  }
+}
