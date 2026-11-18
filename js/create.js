@@ -8,6 +8,15 @@
   // Live invitation base URL (no trailing slash)
   const INVITE_BASE = "https://shayan-weds-juveria.vercel.app";
 
+  // Set on <body data-side="groom|bride">
+  const side = (document.body.dataset.side || "groom").toLowerCase();
+  const isBrideSide = side === "bride";
+
+  const coupleLabel = isBrideSide ? "Juveria & Shayan" : "Shayan & Juveria";
+  const signedBy = isBrideSide
+    ? "Sameera Mohd Zubair Shaikh"
+    : "Iftekhar & Shahida";
+
   const form = document.getElementById("inviteForm");
   const guestName = document.getElementById("guestName");
   const guestCount = document.getElementById("guestCount");
@@ -50,6 +59,7 @@
     } else {
       params.set("guests", String(count));
     }
+    if (isBrideSide) params.set("side", "bride");
     return `${INVITE_BASE}/?${params.toString()}`;
   }
 
@@ -76,7 +86,7 @@
       "",
       `Dear ${name},`,
       "",
-      `With the blessings of Allah, we joyfully invite ${who} to celebrate the Walima of Shayan & Juveria.`,
+      `With the blessings of Allah, we joyfully invite ${who} to celebrate the Walima of ${coupleLabel}.`,
       "",
       guestLine(mode, count),
       "",
@@ -89,7 +99,7 @@
       url,
       "",
       "With love,",
-      "Iftekhar & Shahida",
+      signedBy,
     ].join("\n");
   }
 

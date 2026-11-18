@@ -102,25 +102,60 @@ const weddingConfig = {
 
   /* ---------------- Personalized invite (from ?to= & ?guests=) ---------------- */
 
-  function readInviteGuest() {
+  function readInviteParams() {
     const params = new URLSearchParams(window.location.search);
     const to = (params.get("to") || "").trim().replace(/\s+/g, " ").slice(0, 60);
     const guestsRaw = (params.get("guests") || "").trim().toLowerCase();
-    if (!to) return null;
+    const isBrideSide = (params.get("side") || "").trim().toLowerCase() === "bride";
 
-    if (guestsRaw === "family") {
-      return { name: to, mode: "family", count: null };
+    let guest = null;
+    if (to) {
+      if (guestsRaw === "family") {
+        guest = { name: to, mode: "family", count: null };
+      } else {
+        const count = Number(guestsRaw);
+        if (Number.isFinite(count) && count >= 1) {
+          guest = { name: to, mode: "limited", count: Math.min(50, Math.floor(count)) };
+        } else {
+          guest = { name: to, mode: "family", count: null };
+        }
+      }
     }
 
-    const count = Number(guestsRaw);
-    if (Number.isFinite(count) && count >= 1) {
-      return { name: to, mode: "limited", count: Math.min(50, Math.floor(count)) };
-    }
-
-    return { name: to, mode: "family", count: null };
+    return { guest, isBrideSide };
   }
 
-  const inviteGuest = readInviteGuest();
+  const inviteParams = readInviteParams();
+  const inviteGuest = inviteParams.guest;
+  const isBrideSide = inviteParams.isBrideSide;
+  const coupleLabel = isBrideSide
+    ? `${weddingConfig.bride} & ${weddingConfig.groom}`
+    : `${weddingConfig.groom} & ${weddingConfig.bride}`;
+
+  function applyBrideSideCard() {
+    if (!isBrideSide) return;
+
+    // Girl's name first on the hero card
+    $("#heroGroom").textContent = weddingConfig.bride;
+    $("#heroBride").textContent = weddingConfig.groom;
+
+    const groomParentsEl = $("#heroGroomParents");
+    const brideParentsEl = $("#heroBrideParents");
+    groomParentsEl.textContent = weddingConfig.brideParents;
+    brideParentsEl.textContent = weddingConfig.groomParents;
+
+    // Door monograms: J left, S right
+    const leftMono = document.querySelector(".door--left .door-monogram");
+    const rightMono = document.querySelector(".door--right .door-monogram");
+    if (leftMono) leftMono.textContent = "J";
+    if (rightMono) rightMono.textContent = "S";
+
+    const closingNames = document.querySelector(".closing-names");
+    if (closingNames) closingNames.innerHTML = "Juveria &amp; Shayan";
+
+    const messageSign = document.querySelector(".message-sign");
+    if (messageSign) messageSign.innerHTML = "&mdash; Juveria &amp; Shayan";
+  }
 
   function applyGuestPersonalization() {
     if (!inviteGuest) return;
@@ -151,12 +186,13 @@ const weddingConfig = {
             : `${inviteGuest.name} and guests`;
       welcome.textContent =
         `Dear ${who}, we are honored to welcome you to the Walima of ` +
-        `${weddingConfig.groom} & ${weddingConfig.bride}. ` +
+        `${coupleLabel}. ` +
         `As they begin their journey in faith and love, thank you for being ` +
         `part of this blessed occasion.`;
     }
   }
 
+  applyBrideSideCard();
   applyGuestPersonalization();
 
   /* ---------------- 1. Loading screen ---------------- */
@@ -310,19 +346,26 @@ const weddingConfig = {
 
   /* ---------------- Populate config-driven content ---------------- */
 
-  $("#heroGroom").textContent = weddingConfig.groom;
-  $("#heroBride").textContent = weddingConfig.bride;
+  // Bride-side links already set names via applyBrideSideCard()
+  if (!isBrideSide) {
+    $("#heroGroom").textContent = weddingConfig.groom;
+    $("#heroBride").textContent = weddingConfig.bride;
 
-  const groomParentsEl = $("#heroGroomParents");
-  const brideParentsEl = $("#heroBrideParents");
-  groomParentsEl.textContent = weddingConfig.groomParents;
-  brideParentsEl.textContent = weddingConfig.brideParents;
-  if (!weddingConfig.groomParents) groomParentsEl.hidden = true;
-  if (!weddingConfig.brideParents) brideParentsEl.hidden = true;
+    const groomParentsEl = $("#heroGroomParents");
+    const brideParentsEl = $("#heroBrideParents");
+    groomParentsEl.textContent = weddingConfig.groomParents;
+    brideParentsEl.textContent = weddingConfig.brideParents;
+    if (!weddingConfig.groomParents) groomParentsEl.hidden = true;
+    if (!weddingConfig.brideParents) brideParentsEl.hidden = true;
+  }
 
   // Keep personalized welcome if this link was generated for a guest
   if (!inviteGuest) {
-    $("#welcomeText").textContent = weddingConfig.welcomeMessage;
+    $("#welcomeText").textContent = isBrideSide
+      ? `We are honored to welcome you to the Walima of ${coupleLabel}. ` +
+        `As they begin their journey in faith and love, thank you for being ` +
+        `part of this blessed occasion.`
+      : weddingConfig.welcomeMessage;
   }
 
   const d = weddingConfig.dateReveal;
@@ -668,11 +711,11 @@ const weddingConfig = {
 
     const params = new URLSearchParams({
       action: "TEMPLATE",
-      text: `Walima of ${weddingConfig.groom} & ${weddingConfig.bride}`,
+      text: `Walima of ${coupleLabel}`,
       dates: `${fmt(start)}/${fmt(end)}`,
       details:
         "You are warmly invited to celebrate the Walima of " +
-        `${weddingConfig.groom} & ${weddingConfig.bride}.`,
+        `${coupleLabel}.`,
       location: `${weddingConfig.venue.name}, ${weddingConfig.venue.address}`,
     });
 
